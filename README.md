@@ -19,4 +19,4 @@ Dependencies:
 * h5py 3.1.0
 
 ### Crazyflie preparation
-Please follow the instructions of [Getting Started]([https://hull-repository.worktribe.com/output/4018646](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/)https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/) to assemble the Crazyflie. 
+Please follow the instructions of [Getting Started]([https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/]) to assemble the Crazyflie. 
