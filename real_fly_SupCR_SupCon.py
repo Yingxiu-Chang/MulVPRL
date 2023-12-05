@@ -38,14 +38,12 @@ URI = 'radio://0/80/2M'
 running = True
 
 # Parameters of UAV control policy
-alpha = 0.2
+alpha = 0.2 
 beta = 0.5
 vk = 0
 tk = 0
-Vmax = 0.3
+Vmax = 0.2 # Can be customized depending on experimental environments
 Smax = 40.0
-
-count = 0
 
 # Receiving bytes from Crazyflie
 def rx_bytes(size):
@@ -89,8 +87,6 @@ if __name__ == '__main__':
     # Initialize sequential image matrix
     X = np.zeros(shape=(1, 4, 244, 324, 1), dtype=np.float32)
 
-    Note = open('./images/SupCR_SupCon_left_noIMU/data.txt', mode='w')
-
     with SyncCrazyflie(URI) as scf:
         # We take off when the commander is created
         with MotionCommander(scf) as mc:
@@ -98,8 +94,8 @@ if __name__ == '__main__':
             time.sleep(1)
 
             # rising altitude
-            print('Moving up 0.32m, altitude=0.62m')
-            mc.up(0.15)
+            print('Moving up 0.2m, altitude=0.5m')
+            mc.up(0.2)
             time.sleep(1)
 
             while running:
@@ -110,7 +106,7 @@ if __name__ == '__main__':
                 imgHeader = rx_bytes(length - 2)
                 [magic, width, height, depth, format, size] = struct.unpack('<BHHBBI', imgHeader)
 
-                # Now we start rx the image, this will be split up in packages of some size
+                # Now we start receiving the image, this will be split up in packages of some size
                 imgStream = bytearray()
                 while len(imgStream) < size:
                     packetInfoRaw = rx_bytes(4)
@@ -118,23 +114,20 @@ if __name__ == '__main__':
                     chunk = rx_bytes(length - 2)
                     imgStream.extend(chunk)
 
-                count = count + 1
+                # Image processing and prediction
                 bayer_img = np.frombuffer(imgStream, dtype=np.uint8)
                 bayer_img.shape = (244, 324)
-                cv2.imwrite(f"./images/SupCR_SupCon_left_noIMU/images/frame_{count:04d}.png", bayer_img)
                 bayer_img = process_img(bayer_img, target_size=(324, 244))
                 X[0, -1, ...] = bayer_img
                 steer, coll = model.predict(X)
                 if steer[0, 0] < -1.0: steer[0, 0] = -1.0
                 if steer[0, 0] > 1.0: steer[0, 0] = 1.0
                 print(steer[0, 0])
+
+                # UAV Control Policy
                 tk = steer[0, 0] * Smax
-                # tk = (1-beta)*tk+beta*Smax*(-steer[0, 0])
                 vk = (1-alpha)*vk+alpha*(1-coll[0, 0])*Vmax
-                # print(time.time(), vk, -tk)
-                mc.start_linear_motion(velocity_x_m=0.2, velocity_y_m=0.0, velocity_z_m=0.0, rate_yaw=-tk)
-                Note.writelines(['%s, %s, %s \n' % (time.time(), 0.20, -tk)])
-                # time.sleep(0.05)
+                mc.start_linear_motion(velocity_x_m=vk, velocity_y_m=0.0, velocity_z_m=0.0, rate_yaw=-tk)
                 pass
 
             # Stop the listener
