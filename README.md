@@ -20,3 +20,5 @@ Dependencies:
 
 ### Crazyflie preparation
 Please follow the instructions of [Getting Started](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/) to assemble the Crazyflie and configure the client. 
+### AI-deck preparation
+Please follow the steps of [AI-deck](https://www.bitcraze.io/documentation/tutorials/getting-started-with-aideck/) to initialize the firmware and WiFi connection. 
