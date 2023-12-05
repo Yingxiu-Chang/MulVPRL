@@ -17,3 +17,5 @@ Dependencies:
 * Python gflags
 * Python matplotlib
 * h5py 3.1.0
+
+### Crazyflie preparation
