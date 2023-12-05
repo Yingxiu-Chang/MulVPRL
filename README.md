@@ -22,3 +22,10 @@ Dependencies:
 Please follow the instructions of [Getting Started](https://www.bitcraze.io/documentation/tutorials/getting-started-with-crazyflie-2-x/) to assemble the Crazyflie and configure the client. 
 ### AI-deck preparation
 Please follow the steps of [AI-deck](https://www.bitcraze.io/documentation/tutorials/getting-started-with-aideck/) to initialize the firmware and WiFi connection. 
+
+### Real-world experiments
+Wh finishing the Crazyflie and AI-deck preparations, download this repository and place the UAV in the experimental environments. Connecting the Crazyflie's Wifi hotspot, you can also double check the connection by going to the [AIdeck example repository](https://github.com/bitcraze/aideck-gap8-examples) and doing:
+```
+cd examples/other/wifi-img-streamer
+python opencv-viewer.py
+```
