@@ -29,3 +29,10 @@ When finishing the Crazyflie and AI-deck preparations, download this repository 
 cd examples/other/wifi-img-streamer
 python opencv-viewer.py
 ```
+Finally, cd to this repository and typing followings for autonomous navigation. 
+```
+cd MulSCPL
+python MulSCPL_UAV_control.py
+```
+
+Hope you will have fun with it. 
