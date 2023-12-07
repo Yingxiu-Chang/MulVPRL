@@ -2,7 +2,7 @@
 This repository contains the trained MulSCPL model, codes for UAV control policy and experimental videos.
 
 ## Videos
-Videos are availabel from [here](https://youtu.be/MRzWLfIWKHI) for real-world experiments. 
+Videos are availabel from [here](https://youtu.be/dcDI5X-VHJY) for real-world experiments. 
 
 ## Introduction
 The MulSCPL aims to simultaneously learn the prospective regression-aware and classification-aware representations based on contrastive learning for Visual-based Mapless UAV Indoor Autonomous Navigation. The experiments were conducted in real-world environments upon Nano-UAV (Crazyflie). We released our trained MulSCPL model along with codes for convenient verification and shared the recorded videos.
