@@ -1,11 +1,11 @@
-# Multi-Supervised Contrastive Prospective Learning (MulSCPL) for Visual-based Mapless UAV Indoor Autonomous Navigation
-This repository contains the trained MulSCPL model, codes for UAV control policy and experimental videos.
+# Multi-task Visual Prospective Representation Learning (MulVPRL) for Visual-based Mapless UAV Indoor Autonomous Navigation
+This repository contains the trained MulVPRL model, codes for UAV control policy and experimental videos.
 
 ## Videos
 Videos are availabel from [here](https://youtu.be/dcDI5X-VHJY) for real-world experiments. 
 
 ## Introduction
-The MulSCPL aims to simultaneously learn the prospective regression-aware and classification-aware representations based on contrastive learning for Visual-based Mapless UAV Indoor Autonomous Navigation. The experiments were conducted in real-world environments upon Nano-UAV (Crazyflie). We released our trained MulSCPL model along with codes for convenient verification and shared the recorded videos.
+The MulVPRL aims to simultaneously learn the prospective regression-aware and classification-aware representations based on contrastive learning for Visual-based Mapless UAV Indoor Autonomous Navigation. The experiments were conducted in real-world environments upon Nano-UAV (Crazyflie). We released our trained MulVPRL model along with codes for convenient verification and shared the recorded videos.
 
 ## Running the code
 ### Requirements
@@ -34,8 +34,8 @@ python opencv-viewer.py
 ```
 Finally, cd to this repository and typing followings for autonomous navigation. 
 ```
-cd MulSCPL
-python MulSCPL_UAV_control.py
+cd MulVPRL
+python MulVPRL_UAV_control.py
 ```
 
 Hope you will have fun with it. 
