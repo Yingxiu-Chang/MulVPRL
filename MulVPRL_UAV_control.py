@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------
-# File Name:        MulSCPL for UAV autonomous navigation control
+# File Name:        MulVPRL for UAV autonomous navigation control
 # Author:           Yingxiu-Chang
 # Version:          v1
 # Created:          2023/12/05
@@ -59,7 +59,7 @@ def process_img(img, target_size):
 
     return np.asarray(img, dtype=np.float32) / np.float32(255)
 
-# Load structure of the MulSCPL
+# Load structure of the MulVPRL
 def JsonToModel(json_path):
     with open(json_path, 'r') as json_file:
         loaded_model_json = json_file.read()
@@ -78,8 +78,8 @@ if __name__ == '__main__':
     listener.start()
 
     # Load model and weights
-    model = JsonToModel('./models/MulSCPL/MulSCPL.json')
-    model.load_weights('./models/MulSCPL/best_MulSCPL.h5')
+    model = JsonToModel('./models/MulVPRL/MulVPRL.json')
+    model.load_weights('./models/MulVPRL/best_MulVPRL.h5')
 
     # Initialize the low-level drivers (don't list the debug drivers)
     cflib.crtp.init_drivers(enable_debug_driver=False)
